@@ -1,9 +1,12 @@
 #include "view_opencv.h"
 
+static const int TICK_MS = 100;
+
 BombermanView::BombermanView()
     : m_windowName("Bomberman C++"),
       m_assetsDir("bmp"),
-      m_tileSize(32)
+      m_tileSize(32),
+      m_lastKey(-1)
 {
 }
 
@@ -63,7 +66,6 @@ void BombermanView::render(const Bomberman& model, const string& gameTitle, cons
     // Créer / redimensionner le canvas
     m_canvas = cv::Mat(canvasHeight, canvasWidth, CV_8UC3, cv::Scalar(0, 0, 0));
 
-    // --- Dessin du plateau ---
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
 
@@ -79,7 +81,6 @@ void BombermanView::render(const Bomberman& model, const string& gameTitle, cons
             const cv::Mat& sprite = getSpriteForChar(c);
             if (!sprite.empty()) {
                 cv::Rect roi(x * m_tileSize, y * m_tileSize, m_tileSize, m_tileSize);
-                // Si la taille du sprite n'est pas exactement m_tileSize, on le redimensionne
                 if (sprite.cols != m_tileSize || sprite.rows != m_tileSize) {
                     cv::Mat resized;
                     cv::resize(sprite, resized, cv::Size(m_tileSize, m_tileSize));
@@ -148,11 +149,12 @@ void BombermanView::displayFrame(const Bomberman& model,
                                  const string& levelName)
 {
     render(model, gameTitle, levelName);
-    cv::waitKey(1);
+    m_lastKey = cv::waitKey(TICK_MS);
 }
 
 int BombermanView::getInput() {
-    int key = cv::waitKey(1);
+    int key = m_lastKey;
+    m_lastKey = -1;
     return key;
 }
 

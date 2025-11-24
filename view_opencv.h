@@ -42,6 +42,7 @@ private:
     string m_assetsDir;
     int    m_tileSize;
     cv::Mat m_canvas;
+    int    m_lastKey;
     map<char, cv::Mat> m_sprites;
 
     cv::Mat loadSprite(const string& filename);
