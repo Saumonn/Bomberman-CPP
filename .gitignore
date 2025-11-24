@@ -1,0 +1,59 @@
+# --- Compilations C/C++ ---
+*.o
+*.out
+*.a
+*.so
+*.lo
+*.la
+*.obj
+*.exe
+*.dll
+
+# --- Fichiers générés par make ---
+Bomberman
+main
+controller
+view
+bomberman
+*.d
+
+# --- CMake / Autres systemes (si un jour tu ajoutes) ---
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile~
+build/
+bin/
+lib/
+
+# --- Dossiers temporaires ---
+tmp/
+temp/
+
+# --- Logs ---
+*.log
+
+# --- OpenCV cache / fichiers énergivores ---
+__pycache__/
+*.png.cache
+*.jpg.cache
+
+# --- VSCode / CLion / IDE ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Objets OpenCV (si tu fais des tests) ---
+*.xml
+*.yaml
+*.yml
+
+# --- Sauvegardes ---
+*~
+*.bak
+*.swp
+*.swo
+
+# --- Mac/Linux metadata ---
+.DS_Store
+Thumbs.db
