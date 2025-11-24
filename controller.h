@@ -4,7 +4,7 @@
 #include <string>
 #include <ncurses.h>
 #include "bomberman.h"
-#include "view_opencv.h"
+#include "view.h"
 
 using namespace std;
 

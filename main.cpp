@@ -5,7 +5,7 @@
 
 #include "bomberman.h"
 #include "levels.h"
-#include "view_opencv.h"
+#include "view.h"
 #include "controller.h"
 
 using namespace std;
