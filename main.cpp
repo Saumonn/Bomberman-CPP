@@ -5,7 +5,7 @@
 
 #include "bomberman.h"
 #include "levels.h"
-#include "view.h"
+#include "view_opencv.h"
 #include "controller.h"
 
 using namespace std;
@@ -14,6 +14,8 @@ int main(int argc, char** argv) {
 
     int levelNumber = 1;
     int playerId    = 1;
+    string serverIp = "127.0.0.1";
+    int serverPort  = 4000;
 
     for (int i = 1; i < argc; ++i) {
         string arg = argv[i];
@@ -24,8 +26,14 @@ int main(int argc, char** argv) {
         else if ((arg == "-p") && i + 1 < argc) {
             playerId = atoi(argv[++i]);
         }
+        else if ((arg == "-s") && i + 1 < argc) {
+            serverIp = argv[++i];
+        }
+        else if ((arg == "-P") && i + 1 < argc) {
+            serverPort = atoi(argv[++i]);
+        }
         else {
-            cout << "Usage: " << argv[0] << " [-l niveau(1-5)] [-p joueur(1-4)]\n";
+            cout << "Usage: " << argv[0] << " [-l niveau(1-5)] [-p joueur(1-4)] [-s ip] [-P port]\n";
             return 0;
         }
     }
@@ -43,7 +51,7 @@ int main(int argc, char** argv) {
 
     model << selectedLevel;
 
-    BombermanController controller(model, view, "Bomberman C++", levelName, playerId);
+    BombermanController controller(model, view, "Bomberman C++", levelName, playerId, serverIp, serverPort, true);
 
     controller.run();
     return 0;

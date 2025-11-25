@@ -22,6 +22,8 @@ const int SOCKET_ERROR = -1;
 #include <exception>
 
 
+
+
 namespace masesk {
 	const int BUFF_SIZE = 4096;
 	struct socket_error_exception : public std::exception
