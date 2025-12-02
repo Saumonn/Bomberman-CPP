@@ -51,17 +51,14 @@ void BombermanView::render(const Bomberman& model, const string& gameTitle, cons
     int width  = model.getWidth();
     int height = model.getHeight();
 
-    // Titre
     attron(A_BOLD);
     mvprintw(0, 0, "%s - %s", gameTitle.c_str(), levelName.c_str());
     attroff(A_BOLD);
 
-    // Ligne
     for (int x = 0; x < width; ++x) {
         mvaddch(1, x, '-');
     }
 
-    // Plateau
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
 
@@ -83,7 +80,6 @@ void BombermanView::render(const Bomberman& model, const string& gameTitle, cons
         }
     }
 
-    // Joueurs
     int hudRow = height + 3;
 
     for (int id = 1; id <= 4; ++id) {

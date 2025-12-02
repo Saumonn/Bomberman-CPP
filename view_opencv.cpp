@@ -1,9 +1,6 @@
 #include "view_opencv.h"
 
-BombermanView::BombermanView()
-    : m_windowName("Bomberman C++"),
-      m_assetsDir("bmp"),
-      m_tileSize(32)
+BombermanView::BombermanView() : m_windowName("Bomberman C++"), m_assetsDir("bmp"), m_tileSize(32)
 {
 }
 
@@ -56,14 +53,12 @@ void BombermanView::render(const Bomberman& model, const string& gameTitle, cons
     int width  = model.getWidth();
     int height = model.getHeight();
 
-    int hudHeight = 80; // espace pour afficher les infos en dessous
+    int hudHeight = 80;
     int canvasWidth  = width  * m_tileSize;
     int canvasHeight = height * m_tileSize + hudHeight;
 
-    // Créer / redimensionner le canvas
     m_canvas = cv::Mat(canvasHeight, canvasWidth, CV_8UC3, cv::Scalar(0, 0, 0));
 
-    // --- Dessin du plateau ---
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
 
